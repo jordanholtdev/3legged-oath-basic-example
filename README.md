@@ -33,3 +33,13 @@ Start the dev server
 $ cd 3legged-oath-basic-example
 $ node server.js
 ```
+
+You will need to add your own environment variables
+
+Example env file:
+
+```
+GITHUB_CLIENT_ID="Insert your client ID here"
+GITHUB_SECRET="Your client secret goes here"
+MY_SECRET="random string used to sign JWT"
+```
