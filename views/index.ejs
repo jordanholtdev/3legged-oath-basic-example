@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+
+    <main>
+      <div>
+        <p>
+          This app was put together to learn more about the 3-legged OAuth flow.
+          It uses Github OAuth which you can learn more about <a href="https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps">here</a>.
+          <p>Here are the steps that happen:
+            </p>
+        </p>
+        <ol>
+          <li>The resource owner (you), clicks on the "Authorize this App" button. You might be using a mobile device or desktop computer - in OAuth the device is called the User Agent.</li>
+          <li>Once you click the "Authorize this App" button, the client (this app) will then redirect you to a different domain - the GitHub Authorization server. In the request URL the client ID and can also include other parameters. </li>
+          <li>The user will then be prompted to enter their GitHub credentials, which proves their identity.</li>
+          <li>Once you've signed in, you will have to explicitly grant this app access to certain resources in your GitHub account. The specific resources can be defined in the OAuth scope. </li>
+          <li>If you accept, then you will be redirected back to the client app. The redirect URL will include an authorization code from GitHub.</li>
+          <li>The client will then go back to the Authorization Server with that code and exchange it for an access token. This is done using a POST request using a back channel (not through the browser).</li>
+          <li>Once the client recieves the access token, it can then make requests to the GitHub API on behalf of the resource owner (you).</li>
+        </ol>
+        <p>In this simple app, steps 6 & 7 are done via the client server as soon it recieves the authorization code. So to us as users we are able to see our GitHub data in the dashboard as soon as we grant access and are redirected back to the client. The access token exchange and GitHub API request are automatically.</p>
+        <p>
+          So, just to summarize.
+          The link below will redirect us to the Github Authorization server
+          that will prompt us to login to Github (prove our identity). Once we've logged in, we will
+          be presented with a consent page. The consent page will list which
+          resources (our GitHub resources) are being requested by this app. As resource owners,
+          we can either accept or refuse. If we accept, then we will be
+          redirectd back to this app with an authorization code included in the URL. The app will then exchange that code for an access token and then access the GitHub API on our behalf.
+        </p>
+        <div class="loginWrapper">
+          <p>
+            When a user clicks the button below, they will be redircted to the /auth endpoint of this app which simply then redirects us to the GitHub OAuth servers and presents the user with a GitHub login page.
+          </p>
+          <p>When the user is redirected to the GitHub page, this app will include it's client_id as a URL param.</p>
+           <a href="/auth"><button>Authorize this App</button></a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <main>
+    <div>
+      <h1>Dashboard:</h1>
+      <ul>
+      <% for (const key in decode) { %>
+        <li>
+        <%= key %>: <%=decode[key] %>
+        </li>
+        <% } %>
+    </div>
+    </main>
+  </body>
+</html>

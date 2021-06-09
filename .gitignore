@@ -1,0 +1,7 @@
+# dotent environment variables file
+.env
+.env.production
+.env.test
+
+# Dependency directories
+node_modules/
